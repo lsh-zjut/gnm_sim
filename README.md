@@ -36,6 +36,10 @@
   ```bash
   roslaunch sim_world world0.launch
   ```
+- 启动 RViz 并使用键盘控制：  
+  ```bash
+  roslaunch sim_world manual.launch
+  ```
 
 ## 常用话题
 - 速度指令：`/cmd_vel`（经 `twist_mux` 汇总，内部发往 `/jackal_velocity_controller/cmd_vel`）
@@ -48,7 +52,6 @@
 - 默认深度相机参数位置：`src/jackal_description/urdf/accessories/kinect.urdf.xacro`
   - `<horizontal_fov>` 控制视场角（弧度）。
   - `<clip><near>` / `<clip><far>` 控制最近/最远距离。
-  - 修改后重新 `roslaunch sim_world world.launch` 即会生效（xacro 会重新生成 URDF）。
 - 如果用 pointgrey/flea3 等相机，参数在 `src/jackal_description/urdf/accessories.urdf.xacro` 调用的相机宏里，可调整 `hfov`、`width`、`height` 等。
 
 ## 常用操作
