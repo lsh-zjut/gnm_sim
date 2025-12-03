@@ -12,15 +12,14 @@
   ```
 
 ## 克隆与构建
-1) 创建/进入工作空间（示例放在 `~/fk` 下）：  
+1) 创建/进入工作空间：  
    ```bash
    mkdir -p ~/gnm_sim/src
    cd ~/gnm_sim
    ```
-2) 克隆仓库到 `src`：  
+2) 克隆仓库：  
    ```bash
-   git clone <repo_url> src/gnm_sim   # 将 <repo_url> 替换为你的 GitHub 仓库地址
-   mv src/gnm_sim/* src/              # 若仓库包含顶层 src/，按需调整
+   git clone https://github.com/lsh-zjut/gnm_sim.git                 
    ```
 3) 设置环境并安装依赖：  
    ```bash
