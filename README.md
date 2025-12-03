@@ -12,45 +12,36 @@
   ```
 
 ## 克隆与构建
-1) 创建/进入工作空间：  
-   ```bash
-   mkdir -p ~/gnm_sim/src
-   cd ~/gnm_sim
-   ```
-2) 克隆仓库：  
+1) 克隆仓库：  
    ```bash
    git clone https://github.com/lsh-zjut/gnm_sim.git                 
    ```
-3) 设置环境并安装依赖：  
+2) 设置环境并安装依赖：  
    ```bash
    source /opt/ros/noetic/setup.bash
    rosdep install --from-paths src --ignore-src -r -y
    ```
-4) 编译（使用系统 Python，避免 conda 干扰）：  
+3) 编译：  
    ```bash
-   catkin_make --cmake-args -DPYTHON_EXECUTABLE=/usr/bin/python3
+   catkin_make
    ```
-5) 加载工作空间环境：  
+4) 加载工作空间环境：  
    ```bash
    source devel/setup.bash
    ```
 
 ## 运行示例
-- 启动默认世界并生成 Jackal：  
+- 启动世界并生成 Jackal，world0为室内环境，world为室外环境：  
   ```bash
-  roslaunch sim_world world.launch
-  ```
-- 如果有其他世界或多机器人启动文件（如 `world1.launch`、`spawn_jackal1.launch` / `spawn_jackal2.launch`），按需替换 launch 名称：  
-  ```bash
-  roslaunch sim_world world1.launch
+  roslaunch sim_world world0.launch
   ```
 
 ## 常用话题
 - 速度指令：`/cmd_vel`（经 `twist_mux` 汇总，内部发往 `/jackal_velocity_controller/cmd_vel`）
 - 里程计：`/jackal_velocity_controller/odom`，EKF 融合后 `odometry/filtered`
 - 关节状态：`/joint_states`
-- 激光（若启用）：`/front/scan`
-- 相机（Kinect 默认前置）：`/<prefix>/rgb/image_raw`、`/<prefix>/depth/image_raw`、`/<prefix>/depth/points` 等，`<prefix>` 由相机宏的前缀决定（如 front）
+- 激光：`/front/scan`
+- 相机：`/front/rgb/image_raw`、`/front/depth/image_raw`、`/front/depth/points` 
 
 ## 调整小车相机视野/距离
 - 默认深度相机参数位置：`src/jackal_description/urdf/accessories/kinect.urdf.xacro`
@@ -63,6 +54,6 @@
 - 清理后重编译：  
   ```bash
   rm -rf build devel
-  catkin_make --cmake-args -DPYTHON_EXECUTABLE=/usr/bin/python3
+  catkin_make
   ```
-- 每次新开终端运行前，记得 `source devel/setup.bash`（或追加到 `~/.bashrc`）。***
+- 每次新开终端运行前，记得 `source devel/setup.bash`（或追加到 `~/.bashrc`）。
