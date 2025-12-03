@@ -31,7 +31,7 @@
    ```
 
 ## 运行示例
-- 启动世界并生成 Jackal，world0为室内环境，world为室外环境：  
+- 启动世界并生成 Jackal，`world0.launch`为室内环境，`world1.launch`为室外环境：  
   ```bash
   roslaunch sim_world world0.launch
   ```
