@@ -1,0 +1,12 @@
+# Catkin workspace build outputs
+build/
+devel/
+install/
+
+# ROS/Gazebo logs
+.ros/
+log/
+
+# Python cache
+__pycache__/
+*.pyc

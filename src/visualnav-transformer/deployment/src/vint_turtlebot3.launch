@@ -1,0 +1,16 @@
+<launch>
+    <!-- 启动 Gazebo 仿真环境 -->
+    <include file="$(find turtlebot3_gazebo)/launch/turtlebot3_world.launch">
+        <arg name="model" value="waffle_pi"/>
+    </include>
+
+    <!-- 不启动物理USB摄像头，使用Gazebo提供的虚拟摄像头 -->
+
+    <!-- 启动手柄节点 -->
+
+    <!-- 图像转换节点：将Gazebo摄像头话题转换为视觉导航模型需要的话题 -->
+    <node name="image_transport" pkg="image_transport" type="republish" args="raw in:=/camera/rgb/image_raw raw out:=/usb_cam/image_raw" />
+
+    <!-- 可选：启动图像查看器用于调试 -->
+    <node name="image_view" pkg="image_view" type="image_view" args="image:=/usb_cam/image_raw" output="screen" />
+</launch>
