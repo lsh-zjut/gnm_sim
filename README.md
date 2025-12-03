@@ -31,6 +31,7 @@
    ```
 
 ## 运行示例
+- 启动前准备 Gazebo 模型：将 `models` 放入 `~/.gazebo/`，否则启动gazebo为黑屏。
 - 启动世界并生成 Jackal，`world0.launch`为室内环境，`world1.launch`为室外环境：  
   ```bash
   roslaunch sim_world world0.launch
